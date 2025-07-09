@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# Data and Output
+/data
+
+# Logs
+*.log
+logs/
+
+# VS Code
+.vscode/
