@@ -101,7 +101,7 @@ try:
                         print(f"An error occurred while processing {file.name}: {file_error}. Skipping this file.")
 
         print(f"Finished processing. Total files processed: {files_processed}. Total records attempted for insertion: {records_inserted}.")
-    print("✅ Loaded raw data into PostgreSQL.")
+    print(" Loaded raw data into PostgreSQL.")
 
 except psycopg2.OperationalError as e:
     print(f"\nFATAL: Error connecting to PostgreSQL: {e}")
