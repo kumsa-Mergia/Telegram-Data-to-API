@@ -1,0 +1,41 @@
+# models/marts/schema.yml (updated snippet for fct_messages)
+version: 2 # Make sure this is at the top of the file
+
+models:
+  - name: fct_messages
+    description: "A fact table representing individual Telegram messages, linked to dimensions for analysis."
+    columns:
+      - name: message_id # <--- CHANGED from 'id' to 'message_id'
+        description: "The unique identifier of the Telegram message. Primary Key."
+        tests:
+          - unique
+          - not_null
+      - name: date_id # <--- CHANGED from 'date' to 'date_id'
+        description: "The date the message was sent. Foreign Key to dim_dates.date_id."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+      - name: channel_id
+        description: "The unique identifier of the channel the message belongs to. Foreign Key to dim_channels.channel_id."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_id
+      - name: message_text
+        description: "The cleaned text content of the message."
+      - name: sender_id # This column is in your staging model but not explicitly selected in fct_messages.sql.
+                        # If you want to keep it, add it to your fct_messages.sql select statement.
+                        # Otherwise, remove it from schema.yml here.
+      - name: media_type
+        description: "Type of media attached (e.g., 'photo', 'video', 'document', or NULL)."
+      - name: downloaded_image_path
+        description: "File path where the image (if any) was downloaded locally."
+      - name: message_length
+        description: "The character count of the message text."
+        tests:
+          - not_null
+      - name: has_image
+        description: "Boolean flag: TRUE if the message contains an image, FALSE otherwise."

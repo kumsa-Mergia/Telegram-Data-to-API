@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: raw
+    database: telegram_db
+    schema: raw
+    tables:
+      - name: telegram_messages
+        description: "Raw data imported from Telegram messages."
+        columns:
+          - name: id
+            description: "Primary key from the raw Telegram message."
+            tests:
+              - unique
+              - not_null
+          # Add other raw columns here if you want to describe/test them
+
+models: # Your staging model definition goes here
+  - name: stg_telegram_messages
+    description: "Staging model for raw Telegram messages, performing initial cleaning and restructuring."
+    columns:
+      - name: id
+        description: "The unique identifier of the Telegram message (primary key for staging)."
+        tests:
+          - unique
+          - not_null
+      - name: date
+        description: "The date the message was sent."
+        tests:
+          - not_null
+      - name: channel_name
+        description: "The name of the channel the message was sent in."
+      - name: message_text
+        description: "The cleaned and coalesced text content of the message."
+      - name: sender_id
+        description: "The ID of the sender of the message."
+      - name: media_type
+        description: "The type of media attached to the message (e.g., photo, video, null if no media)."
+      - name: downloaded_image_path
+        description: "Path to the downloaded image file, if any."
+      - name: message_length
+        description: "The length of the message text in characters."
+        tests:
+          - not_null
+      - name: has_image
+        description: "Boolean flag indicating if the message contains an image attachment."
