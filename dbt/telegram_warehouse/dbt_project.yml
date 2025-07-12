@@ -1,0 +1,14 @@
+name: telegram_warehouse
+version: "1.0"
+config-version: 2
+
+profile: telegram_warehouse
+
+model-paths: ["models"]
+
+models:
+  my_project:
+    marts:
+      materialized: table
+    staging:
+      materialized: view
