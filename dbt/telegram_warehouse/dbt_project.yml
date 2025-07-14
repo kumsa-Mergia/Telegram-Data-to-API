@@ -7,7 +7,7 @@ profile: telegram_warehouse
 model-paths: ["models"]
 
 models:
-  my_project:
+  telegram_warehouse:
     marts:
       materialized: table
     staging:
