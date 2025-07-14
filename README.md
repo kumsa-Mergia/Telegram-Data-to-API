@@ -41,14 +41,31 @@ Models are organized into:
 ├── .github/
 │   └── workflows/                # GitHub Actions CI/CD workflows
 ├── dbt/
-│   └── telegram\_warehouse/      # dbt project for data modeling and testing
+│   └── telegram_warehouse/
+│       ├── models/
+│       │   ├── marts/
+│       │   │   └── dim_channels.sql
+│       │   │   └── dim_dates.sql
+│       │   │   └── fct_messages.sql
+│       │   │   
+│       │   ├── staging/
+│       │   │   └── schema.yml
+│       │   │   └── stg_telegram_messages.sql
+│       │   │   └── stg_yolo_detections.sql
+│       │   └── fact/
+│       │   │   └── schema.yml
+│       │   │   └── fct_image_detections.sql
+│       │   ├── sources.yml
+│       └── dbt_project.yml
 ├── notebook/
 │   └── 1.0-telegram-scraper.ipynb  # Jupyter notebook for initial data exploration
+│   └── 3.0-image-detection.ipynb 
 ├── script/
+│   ├── scrape_telegram.py         # Script to scrape data from Telegram
 │   ├── load_json_to_postgres.py   # Loads scraped JSON data into PostgreSQL
-│   └── scrape\_telegram.py         # Script to scrape data from Telegram
+│   └── detect_objects_yolo.py
 ├── src/
-│   └── telegram\_scraper.py        # TelegramScraper class implementation
+│   └── telegram_scraper.py        # TelegramScraper class implementation
 ├── .gitignore                     # Files and folders to ignore in Git
 ├── Dockerfile                     # Docker build instructions
 ├── README.md                      # Project overview and setup instructions

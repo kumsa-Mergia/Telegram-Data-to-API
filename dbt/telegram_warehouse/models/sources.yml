@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    database: telegram_db
+    schema: raw
+    tables:
+      - name: telegram_messages
+        description: "Raw Telegram messages table."
+        columns:
+          - name: id
+            description: "Primary key of the Telegram message."
+            tests:
+              - unique
+              - not_null
+
+  - name: external_sources
+    database: telegram_db
+    schema: raw
+    tables:
+      - name: yolo_detections
+        description: "Raw YOLOv8 object detections."
+        columns:
+          - name: message_id
+            description: "Foreign key to the Telegram message."
+          - name: detected_object_class
+            description: "Detected class from YOLOv8."
+          - name: confidence_score
+            description: "Confidence score of the detection."
