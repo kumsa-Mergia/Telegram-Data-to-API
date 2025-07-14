@@ -17,6 +17,67 @@ This project builds an end-to-end data pipeline to extract, transform, enrich, a
 
 ---
 
+## 🧱 About dbt in This Project
+
+[dbt](https://www.getdbt.com/) (data build tool) is used to manage the transformation layer of the pipeline. It enables version-controlled, modular SQL modeling and automated testing.
+
+### Key Features:
+- Transforms raw Telegram data into clean, analytics-ready models
+- Implements data quality tests (`not_null`, `unique`, `relationships`)
+- Generates documentation for models and sources
+- Supports reproducible and auditable analytics workflows
+
+Models are organized into:
+- `staging`: cleaned and renamed raw data
+- `marts`: final analytics tables and fact models
+
+---
+
+## 📂 Project Structure
+
+```
+
+.
+├── .github/
+│   └── workflows/                # GitHub Actions CI/CD workflows
+├── dbt/
+│   └── telegram\_warehouse/      # dbt project for data modeling and testing
+├── dbt/
+│   └── telegram_warehouse/
+│       ├── models/
+│       │   ├── marts/
+│       │   │   └── dim_channels.sql
+│       │   │   └── dim_dates.sql
+│       │   │   └── fct_messages.sql
+│       │   │   
+│       │   ├── staging/
+│       │   │   └── schema.yml
+│       │   │   └── stg_telegram_messages.sql
+│       │   │   └── stg_yolo_detections.sql
+│       │   └── fact/
+│       │   │   └── schema.yml
+│       │   │   └── fct_image_detections.sql
+│       │   ├── sources.yml
+│       └── dbt_project.yml
+├── notebook/
+│   └── 1.0-telegram-scraper.ipynb  # Jupyter notebook for initial data exploration
+│   └── 3.0-image-detection.ipynb 
+├── script/
+│   ├── scrape_telegram.py         # Script to scrape data from Telegram
+│   ├── load_json_to_postgres.py   # Loads scraped JSON data into PostgreSQL
+│   └── detect_objects_yolo.py
+├── src/
+│   └── telegram_scraper.py        # TelegramScraper class implementation
+├── .gitignore                     # Files and folders to ignore in Git
+├── Dockerfile                     # Docker build instructions
+├── README.md                      # Project overview and setup instructions
+├── docker-compose.yml             # Multi-container setup for services
+└── requirements.txt               # Python dependencies
+
+````
+
+---
+
 ## ⚙️ Setup & Installation
 
 ### Prerequisites
@@ -46,3 +107,6 @@ pip install -r requirements.txt
 
 # 5. dbt Profile
 #    Configure ~/.dbt/profiles.yml to connect dbt to telegram_db
+````
+
+```
