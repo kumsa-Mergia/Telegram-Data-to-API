@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: fct_messages
+    tests:
+      - no_negative_message_length
