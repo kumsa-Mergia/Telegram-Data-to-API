@@ -71,6 +71,14 @@ Models are organized into:
 ├── README.md                      # Project overview and setup instructions
 ├── docker-compose.yml             # Multi-container setup for services
 └── requirements.txt               # Python dependencies
+│   
+├── analytical-api/
+│   └── main.py            # FastAPI entry point
+│   └── database.py        # PostgreSQL connection
+│   └── models.py          # (Optional) SQLAlchemy ORM models
+│   └── schemas.py         # Pydantic response schemas
+│   └── crud.py            # SQL query functions to fetch analytics
+
 
 ````
 
