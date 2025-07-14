@@ -41,8 +41,6 @@ Models are organized into:
 ├── .github/
 │   └── workflows/                # GitHub Actions CI/CD workflows
 ├── dbt/
-│   └── telegram\_warehouse/      # dbt project for data modeling and testing
-├── dbt/
 │   └── telegram_warehouse/
 │       ├── models/
 │       │   ├── marts/
