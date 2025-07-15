@@ -1,0 +1,3 @@
+[tool.dagster]
+python_module = "jobs"
+default_job = "telegram_etl_job"
